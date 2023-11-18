@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "expo-starter-kit",
+    "slug": "expo-starter-kit",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bitcode": false,
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.viro.expo",
+      "infoPlist": {
+        "NSCameraUsageDescription": "$(PRODUCT_NAME) uses the camera for AR functionality"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.example.viro.expo"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "@viro-community/react-viro",
+        {
+          "androidXrMode": [
+            "GVR",
+            "AR",
+            "OVR_MOBILE"
+          ]
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "dcd2d6b7-101c-44de-9026-c9c562b9f5da",
+        "node": "16.18.1"
+      }
+    }
+  }
+}
