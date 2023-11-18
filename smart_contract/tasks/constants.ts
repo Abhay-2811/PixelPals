@@ -78,10 +78,10 @@ export const routerConfig = {
 }
 
 export const contract_addresses: AddressMap = {
-    [`Pixels_contract`]: `0x1534d0aa3e5051ec95c851b72a319f113a418614`,
-    [`MyNFT`]: `0x0c2AC5de45F8C8A966aae5aF5AAc42aAE7135d73`, 
-    [`Source_ccip_op`]: `0xb7bf2932b917c948594dd109cb947e411ff9461b`,
-    [`Source_ccip_arb`]: `0x01e0304681c1ba67ece5dff3c3ad65b4df8f9df0`,
-    [`Source_ccip_avax`]: `0x39daf5111096520efae34054bfd2a2feba271325`,
-    [`Source_ccip_matic`]: `0x1534d0aa3e5051ec95c851b72a319f113a418614`,
+    [`Pixels_contract`]: `0xd4997d8c2ddf898f69d90c2d5b7d4566039b90a2`,
+    [`MyNFT`]: `0x1268dAf5764992Fa620c6B70f0FEfF5FEc79dbc5`, 
+    [`Source_ccip_op`]: `0xd9405f0b7e557b31f0fd50cfbd919fc9c21391ff`,
+    [`Source_ccip_arb`]: `0xd4997d8c2ddf898f69d90c2d5b7d4566039b90a2`,
+    [`Source_ccip_avax`]: `0x5a58d3bc52c578355ad0a27a2ab40e9ccbf8e184`,
+    [`Source_ccip_matic`]: `0xbe4ef6aa6d4484170c690d488a8a61cf4f19cf61`,
 } 

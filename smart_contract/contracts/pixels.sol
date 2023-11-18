@@ -10,30 +10,103 @@ import {IERC20} from "@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-sol
 
 //entire contract on base
 
-contract MyNFT is ERC721URIStorage, Ownable{
-    string constant TOKEN_URI =
-        "https://ipfs.io/ipfs/QmYuKY45Aq87LeL1R5dhb1hqHLp6ZFbJaCP8jxqKM1MX6y/babe_ruth_1.json";
-    uint256 internal tokenId;
-    event nftMinted(address to, uint256 _tokenid);
+contract MyNFT is ERC721, Ownable {
 
-    constructor() ERC721("MyNFT", "MNFT") Ownable(msg.sender){
-        for (uint x = 0; x<3; x++) 
-        {
-            mint(msg.sender);
-            emit nftMinted(msg.sender,tokenId);
-        }
+  string public baseURI;
+
+
+  constructor() ERC721("MyNFT", "MFT") Ownable(msg.sender){
+    mintAllNFTs();
+  }
+
+ function mintNFT(uint256 _tokenId) public {
+  _safeMint(msg.sender, _tokenId); 
+}
+  function _baseURI() internal view virtual override returns (string memory) {
+    return baseURI;
+  }
+
+  function setBaseURI(string memory uri) public {
+    baseURI = uri;
+  }
+
+  function mintAllNFTs() public {
+
+    // S1
+    mintNFT(0);
+    mintNFT(1);
+
+    // S2
+    mintNFT(2);
+    mintNFT(3);
+
+    // S3
+    mintNFT(4);
+    mintNFT(5);
+
+    // S4
+    mintNFT(6);
+    mintNFT(7);
+
+    // S5 
+    mintNFT(8);
+    mintNFT(9);
+
+    // A1
+    for(uint i=0; i < 10; i++) {
+      mintNFT(i + 10); 
     }
 
-    function mint(address to) public onlyOwner {
-        _safeMint(to, tokenId);
-        _setTokenURI(tokenId, TOKEN_URI);
-        unchecked {
-            tokenId++;
-        }
+    // A2
+    for(uint i=0; i < 10; i++) {
+      mintNFT(i + 20);
     }
+
+    // A3
+    for(uint i=0; i < 10; i++) {
+      mintNFT(i + 30);
+    }
+
+    // A4
+    for(uint i=0; i < 10; i++) {
+      mintNFT(i + 40);
+    }
+
+    // A5
+    for(uint i=0; i < 10; i++) {
+      mintNFT(i + 50);
+    }
+
+    // B1
+    for(uint i=0; i < 20; i++) {
+      mintNFT(i + 60);
+    }
+
+    // B2
+    for(uint i=0; i < 20; i++) {
+      mintNFT(i + 80); 
+    }
+
+    // B3
+    for(uint i=0; i < 20; i++) {
+      mintNFT(i + 100);
+    }
+
+    // B4
+    for(uint i=0; i < 20; i++) {
+      mintNFT(i + 120);
+    }
+
+    // B5
+    for(uint i=0; i < 20; i++) {
+      mintNFT(i + 140);
+    }
+
+  }
+
 }
 
-contract Pixels_contract is CCIPReceiver {
+contract Pixels_contract is CCIPReceiver, Ownable {
     MyNFT public nft;
     struct listing{
         address seller;
@@ -47,8 +120,9 @@ contract Pixels_contract is CCIPReceiver {
     event listing_added(address indexed owner, uint indexed token_id, uint indexed price_in_usdt);
     event listing_sold(address indexed seller, address indexed buyer, uint indexed timestamp);
 
-    constructor(address router)CCIPReceiver(router){
+    constructor(address router)CCIPReceiver(router)Ownable(msg.sender){
         nft = new MyNFT();
+        nft.setBaseURI("https://bafybeidoaplxrc5j77r5crihddffvm2uagomhjlbvft6mcil7jiaai3auu.ipfs.nftstorage.link/");
     }
 
     address bnm_token = 0xbf9036529123DE264bFA0FC7362fE25B650D4B16;
@@ -81,8 +155,8 @@ contract Pixels_contract is CCIPReceiver {
         require(success);
     }
     //this will be minitng function, has to be onlyowner just a dummy fn for now
-    function getNFT(uint tokenID) public {
-        nft.transferFrom(address(this), msg.sender, tokenID);
+    function mintNFT(uint tokenID, address _to) public onlyOwner{
+        nft.transferFrom(address(this), _to, tokenID);
     }
      
     //get functions

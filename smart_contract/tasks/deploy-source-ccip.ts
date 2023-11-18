@@ -10,7 +10,7 @@ task(`deploy-source-ccip-contract`, `Deploys ccip_source.sol smart contract`)
         const linkAddress = taskArguments.link ? taskArguments.link : LINK_ADDRESSES[hre.network.name]
         const pixels_add = contract_addresses[`Pixels_contract`];
 
-        console.log(`ℹ️  Attempting to deploy CCIPTokenSender smart contract on the ${hre.network.name} blockchain with the Router address ${routerAddress} and LINK address ${linkAddress} provided as constructor arguments`);
+        console.log(`ℹ️  Attempting to deploy CCIPTokenSender smart contract on the ${hre.network.name} blockchain with the Router address ${routerAddress}, Pixels address ${pixels_add} and LINK address ${linkAddress} provided as constructor arguments`);
 
         const ccip_sender = await hre.viem.deployContract("CCIPTokenSender",[routerAddress, linkAddress, pixels_add]);
         
