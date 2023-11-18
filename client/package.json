@@ -11,6 +11,9 @@
     "setup:android": "yarn cache clean && rm -rf node_modules yarn.lock package-lock.json ios android .expo && yarn install && expo prebuild --clean -p android --no-install"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.5.11",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native-stack": "^6.9.17",
     "@viro-community/react-viro": "^2.23.0",
     "expo": "~44.0.0",
     "expo-dev-client": "~0.8.6",
@@ -19,6 +22,8 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.4",
+    "react-native-safe-area-context": "^4.7.4",
+    "react-native-screens": "^3.27.0",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
