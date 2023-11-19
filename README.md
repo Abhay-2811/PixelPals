@@ -1,4 +1,5 @@
 # PixelPals
+Link to PPT - https://drive.google.com/file/d/1oRv7Dgs8UFoSHk51Xt_juR-LjXme9ERc/view?usp=sharing
 # Contracts
 Contract Address for API3 QRNG random_coordinates - 0x5f5a219CA1aAA343104E06973bCe6B76bE531FD5
 
